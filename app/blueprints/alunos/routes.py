@@ -91,6 +91,7 @@ def alunos_edit_post(_id_):
 		dados.telefone= form.telefone.data
 
 		db.session.add(dados)
+		print(dados)
 		db.session.commit()
 		print('SUCESSO')
 	else:

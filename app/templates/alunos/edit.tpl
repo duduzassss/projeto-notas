@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block styles %}
+
 	<style type="text/css">
 		*,body{
 			background-color: #A2D3C2;
@@ -37,13 +38,13 @@
 		.nome input{
 			width: 600px;
 		}
-		.nome .serie .turma .nascimento .est_civil .sexo .nacionalidade .responsavel .endereco .bairro .cidade .cep .telefone, label{
+		.nome .serie .turma .nascimento .est_civil .nacionalidade .responsavel .endereco .bairro .cidade .cep .telefone, label{
 			color: #ffffff;
 			background-color: #506C64;
 			padding: 5px 5px 7px 7px;
 			border-radius: 5px 0px 0px 5px;
 		}
-		.nome .serie .turma .nascimento .est_civil .sexo .nacionalidade .responsavel .endereco .bairro .cidade .cep .telefone, input{
+		.nome .serie .turma .nascimento .est_civil .nacionalidade .responsavel .endereco .bairro .cidade .cep .telefone, input{
 			background-color: #DDFDFE;
 			margin-left: -4px;
 			border-radius: 0px 5px 5px 0px;
@@ -106,8 +107,9 @@
 			color: #000000;
 			vertical-align: middle;
 			position: relative;
-			top: 8px;
-
+			top: 40px;
+			display: block;
+			width: 133.5px;
 			border-radius: 0px 5px 5px 5px;
 		}
 		.sexo-femi{
@@ -115,11 +117,16 @@
 			color:#000000;
 			vertical-align: middle;
 			position: relative;
-			top: 8px;
-			left: 27px;
-			border-radius: 5px 0px 5px 5px;
+			top: -34px;
+			left: 0px;
 
+			border-radius: 0px 0px 0px 0px;
+
+			display: block;
+			float: left;
+			width: 133.5px;
 		}
+		
 		.nascimento{
 			width: 221px;
 			position: absolute;
@@ -202,7 +209,7 @@
 
 		.info-tudo{
 			background-color: #A5D3F2;
-			height: 295px;
+			height: 305px;
 			width: 818px;
 			padding: 15px 15px 0px 15px;
 
@@ -218,6 +225,19 @@
 		.icon-home{
 			color: #0D1B1E;
 			margin-left: 580px;
+		}
+
+		.botao{
+			margin-left: 570px;
+			margin-bottom: 25px;
+			
+			background-color: #449D44;
+			color: #ffffff;
+			border-style: none;
+			border-radius: 5px;
+			width: 200px;
+			height: 35px;
+			font-size: 18px;
 		}
 	</style>
 {% endblock %}
@@ -240,29 +260,33 @@
 		</div>
 		<div class="serie">
 		    <label>Série</label><campo></campo>		<!--FAZER ESSE CAMPO DEPOIS-->
-    		<select name="serie" value="{{form.serie}}">
-    			<option disabled selected>Selecionar...</option>
-    			<option>1º ano</option>
-    			<option>2º ano</option>
-    			<option>3º ano</option>
+    		<select name="serie" value="{{dados.serie}}">
+    			<option value="1º ano" {% if dados.serie == "1º ano" %} selected {% endif %}>1º ano</option>
+    			<option value="2º ano" {% if dados.serie == "2º ano" %} selected {% endif %}>2º ano</option>
+    			<option value="3º ano" {% if dados.serie == "3º ano" %} selected {% endif %}>3º ano</option>
     		</select>
 		</div>
 		<div class="turma">
 		    <label>Turma</label><campo></campo>		<!--FAZER ESSE CAMPO DEPOIS-->
     		<select name="turma">
-    			<option disabled >Selecionar...</option>
-    			<option>A1</option>
-    			<option>A2</option>
-    			<option>L1</option>
-    			<option>L2</option>
-    			<option>R1</option>
-    			<option>R2</option>
+    			<!-- <option disabled selected>{{dados.turma}}</option> -->
+    				<option value="a1" {% if dados.turma == "a1" %} selected {% endif %}>A1</option>
+    				<option value="a2" {% if dados.turma == "a2" %} selected {% endif %}>A2</option>
+    				<option value="l1" {% if dados.turma == "l1" %} selected {% endif %}>L1</option>
+    				<option value="l2" {% if dados.turma == "l2" %} selected {% endif %}>L2</option>
+    				<option value="r1" {% if dados.turma == "r1" %} selected {% endif %}>R1</option>
+    				<option value="r2" {% if dados.turma == "r2" %} selected {% endif %}>R2</option>
     		</select>
 		</div>
 		<div class="sexo">
 		    <label class="sexo-titulo">Sexo</label>
-		    <label class="sexo-masc"><input type="radio" name="sexo" value="masculino">Masc</label>
-		    <label class="sexo-femi"><input type="radio" name="sexo" value="feminino">Femi</label>
+		    {% if dados.sexo == "masculino" %}
+		    	<label class="sexo-masc"><input type="radio" name="sexo" value="masculino" checked>Masculino</label>
+		    	<label class="sexo-femi"><input type="radio" name="sexo" value="feminino">Feminino</label>
+		    {% else %}
+		   		 <label class="sexo-masc"><input type="radio" name="sexo" value="masculino">Masculino</label>
+		    	<label class="sexo-femi"><input type="radio" name="sexo" value="feminino" checked>Feminino</label>
+		    {% endif %}
 		</div>
 		<div class="nascimento">
 		    <label>Data de nascimento</label>
@@ -303,7 +327,7 @@
 		</div>
 
     </div>
- 	<input type="submit" class="botao btn btn-success " name="botao" value="Concluir cadastro">
+ 	<input type="submit" class="botao" name="botao" value="Alterar">
     </form>
     <a class="icon-home" href="/"><i class="fas fa-home fa-3x">Home</i></a>
    
