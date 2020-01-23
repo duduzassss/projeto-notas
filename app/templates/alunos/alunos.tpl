@@ -40,7 +40,7 @@
 			margin-right: 5px;
 		}
 		.fa-home{
-			color: #51CB20;
+			color: #0D1B1E;
 
 		}
 		home{
@@ -73,10 +73,13 @@
 	      
 	    </tr>
 	  </thead>
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	  
 	  {% for dado in dados %}
 	  <tbody>
 	    <tr>
-	      <th scope="row">{{dado.id}}</th>
+	      <th scope="row" id="_id_{{dado.id}}">{{dado.id}}</th>
 	      <td>{{ dado.nome }}</td>
 	      <td>{{ dado.nascimento }}</td>
 	      <td>{{ dado.nome_responsavel }}</td>
@@ -85,12 +88,80 @@
 	      	
             <a href="/alunos/edit/{{dado.id}}"><i class="fas fa-edit fa-2x"></i></a>
             <a href="/alunos/view/{{dado.id}}"><i class="fas fa-eye fa-2x"></i></a>
-            <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
-          
+
+            <a href="/alunos/del/{{dado.id}}" name="id_aluno"><i id="trash{{dado.id}}" class="fas fa-trash-alt fa-2x" onclick="confirmDelete()"></i></a>
+     		
+     		
+        	<script type="text/javascript">
+        		idAluno = document.getElementById('_id_{{dado.id}}');
+        		$("#trash{{dado.id}}").click(function(event){
+                event.preventDefault();
+                // ajax_delete_user();
+                console.log(document.getElementById('_id_{{dado.id}}'));
+                // let idAluno = document.getElementById('_id_{{dado.id}}');
+
+
+            });
+
+
+        	</script>
+
 	      </td>
 	    </tr>
 	  </tbody>
 	  {% endfor %}
 	</table>
+	{% block scripts %}
+		{{super()}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			var ids;
+			function confirmDelete(){
+				$.ajax({
+				    url: '/alunos/del/',
+				    async: false,
+				    type: 'GET',
+				    success: function(data){
+				        ids = document.getElementById('_id_{{dados.id}}');
+				        console.log(ids);
+				       
+				    },
+				    error: function(error){
+				        console.log(error)
+				    }
+				});
 
+
+				$.ajax({
+					url: '/alunos/del/'+ ids,
+					type: 'GET',
+					success: function(response){
+						console.log(response);
+					},
+					error: function(error){
+						console.log(error);
+					}
+				})
+			}
+
+		// $(document).ready(function(){
+		// 	function ajax_delete_user(){
+		// 		$.ajax({
+		// 			url: '/alunos/del/'+ id_aluno,
+		// 			type: 'GET',
+		// 			data: {id_aluno_app : idAluno},
+		// 			success: function(response){
+		// 				console.log(response);
+		// 			},
+		// 			error: function(error){
+		// 				swal("Ops, algo deu errado","ERRO","error");
+		// 				console.log(error);
+		// 			}
+		// 		});
+		// 	}
+		// });
+			
+				
+		</script>
+	{% endblock %}
 {% endblock %}

@@ -1,6 +1,7 @@
-from flask import render_template,request,flash,redirect
+from flask import render_template,request,flash,redirect,jsonify
 from ...models.models import Alunos
 from .forms import AdicionaAlunosForm
+from flask_login import current_user
 
 
 
@@ -96,4 +97,14 @@ def alunos_edit_post(_id_):
 		print('SUCESSO')
 	else:
 		print('ERRO',form.errors)
+	return redirect('/alunos')
+
+
+@alunos.route('/alunos/del/<int:_id_>', methods=['GET'])
+def alunos_del_post(_id_):
+	dados = Alunos.query.filter_by(id=_id_).first()
+	print('DADOS',dados)
+
+	db.session.delete(dados)
+	db.session.commit()
 	return redirect('/alunos')
