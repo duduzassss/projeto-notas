@@ -18,40 +18,45 @@ def lista_alunos():
 @alunos.route('/alunos/add', methods=['GET'])
 def alunos_add_get():
 	form = AdicionaAlunosForm()
-	return render_template('alunos/add_alunos.tpl',form=form)
+	dados = Alunos.query.all()
+	return render_template('alunos/add_alunos.tpl',form=form, dados=dados)
 
 @alunos.route('/alunos/add', methods=['POST'])
 def alunos_add_post():
 	form = AdicionaAlunosForm(request.form)
 	serie = request.form.get('serie')
 	turma = request.form.get('turma')
-	est_civil = request.form.get('civil')
+	est_civil = request.form.get('est_civil')
 	sexo = request.form.get('sexo')
-	
+	nascimento = request.form.get('nascimento')
 	print('REQUEST FORM', request.form)
 	
-	print('ERROS',str(form.errors))
+	print('serie',serie ,'turma',turma,'est_civil',est_civil,'sexo',sexo, 'nascimento',nascimento)
 
-	if request.method == 'POST':
+	if form.validate_on_submit() and request.method == 'POST':
 		print('ENTROU')
-		novo_aluno = Alunos(nome=form.nome.data,
-							serie=form.serie.data,
-							turma=form.turma.data,
-							nascimento=form.nascimento.data,
-							est_civil=form.est_civil.data,
-							sexo=form.sexo.data,
-							nacionalidade=form.nacionalidade.data,
-							nome_responsavel=form.nome_responsavel.data,
-							endereco=form.endereco.data,
-							bairro=form.bairro.data,
-							cidade=form.cidade.data,
-							cep=form.cep.data,
-							telefone=form.telefone.data
-							)
-		print('NOVO ALUNO',novo_aluno)
-		db.session.add(novo_aluno)
-		db.session.commit()
-		flash('Aluno adicionado!','success')
+		try:
+			novo_aluno = Alunos(nome=form.nome.data,
+								serie=form.serie.data,
+								turma=form.turma.data,
+								nascimento=form.nascimento.data,
+								est_civil=form.est_civil.data,
+								sexo=form.sexo.data,
+								nacionalidade=form.nacionalidade.data,
+								nome_responsavel=form.nome_responsavel.data,
+								endereco=form.endereco.data,
+								bairro=form.bairro.data,
+								cidade=form.cidade.data,
+								cep=form.cep.data,
+								telefone=form.telefone.data
+								)
+			print('NOVO ALUNO',novo_aluno)
+			db.session.add(novo_aluno)
+			db.session.commit()
+			flash('Aluno adicionado!','success')
+		except Exception as e:
+			flash ('erro'+str(e) ,'danger')
+			print('erro'+str(e))
 	else:
 		flash('Erro nos dados, verifique e insira os dados novamente'+str(form.errors),'danger')
 	return redirect('/alunos/add')
@@ -101,10 +106,10 @@ def alunos_edit_post(_id_):
 
 
 @alunos.route('/alunos/del/<int:_id_>', methods=['GET'])
-def alunos_del_post(_id_):
+def alunos_del_get(_id_):
 	dados = Alunos.query.filter_by(id=_id_).first()
-	print('DADOS',dados)
-
+	print('dados',dados)
+	
 	db.session.delete(dados)
 	db.session.commit()
 	return redirect('/alunos')

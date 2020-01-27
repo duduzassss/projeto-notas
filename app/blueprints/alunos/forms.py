@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,BooleanField, IntegerField,SubmitField
+from wtforms import StringField,BooleanField, IntegerField,SubmitField,DateField
 from wtforms.validators import InputRequired,Length, DataRequired
 
 class AdicionaAlunosForm(FlaskForm):
@@ -16,4 +16,3 @@ class AdicionaAlunosForm(FlaskForm):
 	cidade		= StringField('CIDADE', validators=[InputRequired(),Length(min=3, max=30)])
 	cep 		= StringField('CEP', validators=[InputRequired(),Length(min=8, max=8)])
 	telefone	= StringField('TELEFONE', validators=[InputRequired(),Length(min=9, max=9)])
-	

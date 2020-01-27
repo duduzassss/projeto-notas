@@ -76,9 +76,11 @@
 
 		}
 		.nascimento input{
-			width: 85px;
+			width: 135px;
 			text-align: center;
 			border-radius: 5px;
+			background-color: #2E4052;
+			color: white;
 		}
 		.est_civil{
 			width: 210px;
@@ -177,6 +179,11 @@
 		.sexo .est_civil .turma .serie, option{
 			background-color: #2E4052;
 		}
+
+		.data input{
+			width: 150px;
+			background-color: red;
+		}
 	</style>
 {% endblock %}
 {% block content %}
@@ -223,7 +230,8 @@
     		</select>
     	</div>
     	<div class="nascimento">
-    		<label>DATA DE NASCIMENTO</label><campo>{{form.nascimento}}</campo>
+    		<label>NASCIMENTO</label><!-- <campo name="nascimento">{{form.nascimento}}</campo> -->
+    		<input type="date" class="data" name="nascimento">
     	</div>
     	<div class="est_civil">
     		<label>ESTADO CIVIL</label><campo></campo>              <!--FAZER ESSE CAMPO DEPOIS-->

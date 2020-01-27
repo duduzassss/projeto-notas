@@ -17,7 +17,7 @@ class Alunos(db.Model):
 	bairro			 = db.Column(db.String(250))
 	cidade			 = db.Column(db.String(250))
 	cep				 = db.Column(db.String(50))
-	telefone		 = db.Column(db.String(50))
+	telefone		 = db.Column(db.String(11))
 
 
 
