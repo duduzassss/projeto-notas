@@ -38,7 +38,7 @@
 			color: #31393C;
 		}
 		.fa-home{
-			color: #51CB20;
+			color: #0D1B1E;
 
 		}
 		campo input{
@@ -107,6 +107,9 @@
 			width: 253px;
 			border-radius: 2px;
 
+		}
+		.nacionalidade select, input{
+			width: 250px;
 		}
 		.responsavel{
 			width: 638px;
@@ -253,7 +256,12 @@
     		</select>
     	</div>
     	<div class="nacionalidade">
-    		<label>NACIONALIDADE</label><campo>{{form.nacionalidade}}</campo>
+    		<label>NACIONALIDADE</label><!-- <campo>{{form.nacionalidade}}</campo> -->
+    		<select name="nacionalidade">
+    			{% for nac in nacio.values() %}
+    				<option>{{nac}}</option>
+    			{% endfor %}
+    		</select>
     	</div>
     	<div class="responsavel">
     		<label>RESPONSÁVEL</label><campo>{{form.nome_responsavel}}</campo>

@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date,datetime
 
 db = SQLAlchemy()
 
@@ -8,7 +9,7 @@ class Alunos(db.Model):
 	nome 			 = db.Column(db.String(250))
 	serie			 = db.Column(db.String(20))
 	turma			 = db.Column(db.String(50))
-	nascimento		 = db.Column(db.String(50))
+	nascimento		 = db.Column(db.DateTime())
 	est_civil		 = db.Column(db.String(10))
 	sexo			 = db.Column(db.String(10))
 	nacionalidade	 = db.Column(db.String(50))

@@ -10,7 +10,7 @@ import os
 migrate = Migrate()
 bootstrap = Bootstrap()
 fa = FontAwesome()
-csrf=CsrfProtect()
+csrf = CsrfProtect()
 config_name = os.environ.get('FLASK_ENV')
 
 def create_app(config_filename='config.py', cfg_name=config_name):

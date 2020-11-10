@@ -133,8 +133,9 @@
 			margin-top: -115px;
 		}
 		.nascimento input{
-			width: 80px;
-			text-align: center;
+			width: 129px;
+			height: 27px;
+			background-color: #DDFDFE;
 		}
 		.est_civil{
 			width: 210px;
@@ -150,8 +151,12 @@
 			position: absolute;
 			margin-top: -65px;
 		}
-		.nacionalidade input{
-			width: 115px;
+		.nacionalidade select{
+			width: 117px;
+			margin-left: -4px;
+			height: 31px;
+			background-color: #DDFDFE;
+			border-radius: 0px 5px 5px 0px;
 		}
 		.endereco{
 			width: 403px;
@@ -209,7 +214,7 @@
 
 		.info-tudo{
 			background-color: #A5D3F2;
-			height: 305px;
+			height: 325px;
 			width: 818px;
 			padding: 15px 15px 0px 15px;
 
@@ -289,8 +294,10 @@
 		    {% endif %}
 		</div>
 		<div class="nascimento">
-		    <label>Data de nascimento</label>
-		    <input type="text" name="nascimento"  value="{{dados.nascimento}}">
+		    <label>Nascimento</label>
+		    
+		    <input type="date" name="nascimento"  value="{{dados.nascimento.strftime('%Y-%m-%d')}}">
+		    
 		</div>
 		<div class="est_civil">
 		    <label>Estado civil</label>
@@ -299,7 +306,19 @@
 		
 		<div class="nacionalidade">
 		    <label>Nacionalidade</label>
-		    <input type="text" name="nacionalidade"  value="{{dados.nacionalidade}}">
+		    
+			<select name="nacionalidade">
+				
+				{% for item,valor in nacio.items() %}				
+					<option value="{{valor}}" 
+					{% if dados.nacionalidade in valor %}
+						
+					 	selected
+
+					{% endif %}>{{valor}}</option>
+				{% endfor %}
+    			
+    		</select>
 		</div>
 		<div class="endereco">
 		    <label>Endereço</label>

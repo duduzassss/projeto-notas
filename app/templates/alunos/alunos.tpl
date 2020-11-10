@@ -13,13 +13,7 @@
 		body{
 			background-color: #A2D3C2;
 		}
-		hr.new5 {
-		  border: 3px solid green;
-		  border-radius: 10px;
-		}
-		hr{
-			width: 300px;
-		}
+		
 		.titulo{
 			text-align: center;
 			text-transform: uppercase;
@@ -60,6 +54,23 @@
 			font-weight: bold;
 
 		}
+		.style-hr2{
+		    height: 10px;
+		    border: 0;
+		    box-shadow: 0 10px 10px -9px #000000 inset;
+		    width: 570px;
+		    margin-left: 0px;
+		    margin-top: 6px;
+		}
+		.style-hr1{
+			height: 10px;
+		    border: 0;
+		    box-shadow: 0 10px 4px -9px #000000 inset;
+		    width: 570px;
+		    margin-left: 0px;
+		    margin-bottom: 0px;
+		}
+
 	</style>
 {% endblock %}
 {% block content %}
@@ -67,10 +78,19 @@
 
 	<div class="container">
       <h2 class="titulo">Lista de Alunos</h2>
-      <hr class="new5">
       <div class="row">
       </div>
     </div>
+
+	<div class="separador-search">
+		
+		<div class="input-group col-sm-5">
+		  <input class="form-control"
+		         placeholder="Procurar por alunos...">
+		  <div class="input-group-addon" style="background-color: #0D1B1E;"><i class="fa fa-search" style="color: #ffffff;"></i></div>
+		</div>
+		
+	</div>
 
 
     <table class="table table-sm">
@@ -92,7 +112,7 @@
 	    <tr>
 	      <th scope="row">{{dado.id}}</th>
 	      <td class="nome">{{ dado.nome }}</td>
-	      <td>{{ dado.nascimento }}</td>
+	      <td>{{ dado.nascimento.strftime('%d/%m/%Y') }}</td>
 	      <td>{{ dado.nome_responsavel }}</td>
 	      <td>{{ dado.telefone }}</td>
 	      <td>

@@ -3,7 +3,7 @@ from ...models.models import Alunos
 from .forms import AdicionaAlunosForm
 from flask_login import current_user
 
-
+from datetime import datetime # Testando campo data para preenchimento
 
 from . import alunos
 from ... import db
@@ -19,7 +19,15 @@ def lista_alunos():
 def alunos_add_get():
 	form = AdicionaAlunosForm()
 	dados = Alunos.query.all()
-	return render_template('alunos/add_alunos.tpl',form=form, dados=dados)
+
+	nacio = {
+		1:"Americano",2:"Alemão",3:"Árabe",4:"Afegão",5:"Argentino",6:"Australiano",
+		7:"Austríaco",8:"Bangladês",9:"Britânico",10:"Bielorrusso",11:"Belga",12:"Boliviano",
+		13:"Brasileiro",14:"Canadense",15:"Costa-marfinense",16:"Chinês"
+	}
+
+
+	return render_template('alunos/add_alunos.tpl',form=form, dados=dados, nacio=nacio)
 
 @alunos.route('/alunos/add', methods=['POST'])
 def alunos_add_post():
@@ -28,10 +36,13 @@ def alunos_add_post():
 	turma = request.form.get('turma')
 	est_civil = request.form.get('est_civil')
 	sexo = request.form.get('sexo')
-	nascimento = request.form.get('nascimento')
+	nasc = request.form.get('nascimento')
+	nacionalidade = request.form.get('nacionalidade')
 	print('REQUEST FORM', request.form)
+	# import ipdb
+	# ipdb.set_trace()
 	
-	print('serie',serie ,'turma',turma,'est_civil',est_civil,'sexo',sexo, 'nascimento',nascimento)
+	print('serie',serie ,'\nturma',turma,'\nest_civil',est_civil,'\nsexo',sexo, '\nnascimento',nasc,'\nnacionalidade',nacionalidade)
 
 	if form.validate_on_submit() and request.method == 'POST':
 		print('ENTROU')
@@ -71,12 +82,30 @@ def alunos_view(_id_):
 def alunos_edit_get(_id_):
 	form = AdicionaAlunosForm()
 	dados = Alunos.query.filter_by(id=_id_).first()
-	return render_template('/alunos/edit.tpl', form=form, dados=dados, _id_=_id_)
+
+	
+
+	nacio = {
+		1:"Americano",2:"Alemão",3:"Árabe",4:"Afegão",5:"Argentino",6:"Australiano",
+		7:"Austríaco",8:"Bangladês",9:"Britânico",10:"Bielorrusso",11:"Belga",12:"Boliviano",
+		13:"Brasileiro",14:"Canadense",15:"Costa-marfinense",16:"Chinês",
+		17:"Croata",18:"Cubano",19:"Dinamarquês",20:"Eslovaco",21:"Espanhol",22:"Equatoriano",
+		23:"Egípcio",24:"Finlandês",25:"Francês",26:"Filipino",27:"Grego",28:"Húngaro",29:"Holandês",
+		30:"Inglês",31:"Iraniano",32:"Irlandês",33:"Israelita",34:"Italiano",35:"Japonês",
+		36:"Libanês",37:"Luxemburguês",38:"Malaio",39:"Mexicano",40:"Marroquino",41:"Neozelandês",
+		42:"Norueguês",43:"Panamenho",44:"Paraguaio",45:"Peruano",46:"Polonês",47:"Queniano",
+		48:"Russo",49:"Sueco",50:"Suiço"
+	}
+	# import ipdb
+	# ipdb.set_trace()
+	return render_template('/alunos/edit.tpl', form=form, dados=dados, _id_=_id_,
+		nacio=nacio)
 
 @alunos.route('/alunos/edit/<int:_id_>', methods=['POST'])
 def alunos_edit_post(_id_):
 	form = AdicionaAlunosForm()
 	dados = Alunos.query.filter_by(id=_id_).first()
+
 	print(form.nome.data)
 	print(form.nome_responsavel.data)
 
@@ -113,3 +142,7 @@ def alunos_del_get(_id_):
 	db.session.delete(dados)
 	db.session.commit()
 	return redirect('/alunos')
+
+@alunos.route('/alunos/teste-bootstrap',methods=['GET'])
+def teste_boots():
+	return render_template('home/header-footer-all.tpl')

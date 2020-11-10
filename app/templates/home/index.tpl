@@ -24,6 +24,15 @@
   <!-- Custom styles for this template -->
   <link href="{{ url_for('static', filename='css/freelancer.min.css') }}" rel="stylesheet">
 
+  <style type="text/css">
+    hr.star-light:after {
+      background-color: initial;
+    }
+    .mudacor{
+      background-color: #FAAB3F;
+    }
+  </style>
+
 </head>
 
 <body id="page-top">
@@ -34,8 +43,8 @@
   <!-- Header -->
   <header class="masthead bg-primary text-white text-center">
     <div class="container">
-      <img class="img-fluid mb-5 d-block mx-auto" src="{{ url_for('static', filename='img/profile.png') }}" alt="">
-      <h1 class="text-uppercase mb-0">Nossa Escola</h1>
+      <img class="img-fluid mb-5 d-block mx-auto" src="{{ url_for('static', filename='img/principal.png') }}" alt="">
+      <h1 class="text-uppercase mb-0">Dora Baby</h1>
       <hr class="star-light">
       <h2 class="font-weight-light mb-0">As primeiras descobertas... são AQUI!</h2>
     </div>
@@ -48,63 +57,69 @@
       <hr class="star-dark mb-5">
       <div class="row">
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto Plantando para colher</h3>
+                <p style="font-size: 15px;">"Trabalhando" em equipe, ops... Diversão em equipe!</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/cabin.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-1.jpg') }}" alt="">
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto Regue uma plantinha</h3>
+                <p style="font-size: 15px;">Clara e Ana, regando as mudinhas, recém plantadas, por elas mesmas!</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/cake.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-2.jpg') }}" alt="">
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto Raciocinio rápido</h3>
+                <p style="font-size: 15px;">Alunos jogando xadrez, com auxílio da professora Maria.</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/circus.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-3.jpg') }}" alt="">
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto Desinibir</h3>
+                <p style="font-size: 15px;">Apresentação das nossas florzinhas, da 3º série.</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/game.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-4.jpg') }}" alt="">
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto Da Vinci</h3>
+                <p style="font-size: 15px;">Para eles a tinta não serve para pintar, sim para se, DIVERTIIIIR!</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/safe.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-5.jpg') }}" alt="">
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
+          <a class="portfolio-item d-block mx-auto" href="#">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+                <h3>Projeto União</h3>
+                <p style="font-size: 15px;">Que tal se juntar a nossa fila e se tornar o próximo número?</p>
               </div>
             </div>
-            <img class="img-fluid" src="{{ url_for('static', filename='img/portfolio/submarine.png') }}" alt="">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/proj-6.jpg') }}" alt="">
           </a>
         </div>
       </div>
@@ -112,19 +127,26 @@
   </section>
 
   <!-- About Section -->
-  <section class="bg-primary text-white mb-0" id="about">
+  <section class="mudacor text-white mb-0" id="about">
     <div class="container">
       <h2 class="text-center text-uppercase text-white">nossos princípios</h2>
       <hr class="star-light mb-5">
       <div class="row">
-        <div class="col-lg-4 ml-auto">
-          <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
-        </div>
-        <div class="col-lg-4 mr-auto">
-          <p class="lead">Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+        <div class="col-lg-5 mx-auto text-justify">
+          <p class="lead" style="text-indent: 15px;">Igualdade de condições para acesso e permanência na escola.
+          Respeito ao pluralismo de ideias e concepções pedagógicas.
+          Reconhecimento e respeito da diversidade.
+          Garantia de ensino público gratuito, democrático e de qualidade social.
+          Gestão democrática na forma da lei.
+          Vinculação entre educação escolar, o trabalho e as práticas sociais.</p>
         </div>
       </div>
       
+<!-- <div class="col-md-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Siga-nos nas redes</h4> -->
+
+
+
     </div>
   </section>
 

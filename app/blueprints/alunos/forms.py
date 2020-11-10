@@ -6,7 +6,7 @@ class AdicionaAlunosForm(FlaskForm):
 	nome 		= StringField('NOME',validators=[InputRequired(),Length(min=3)])
 	serie		= StringField('SÉRIE',validators=[InputRequired(),Length(min=2, max=8)])
 	turma		= StringField('TURMA',validators=[InputRequired(), Length(min=2)])
-	nascimento 	= StringField('DATA NASCIMENTO',validators=[InputRequired()])
+	nascimento 	= DateField('DATA NASCIMENTO',validators=[])
 	est_civil 	= StringField('ESTADO CIVIL',validators=[InputRequired()])
 	sexo		= StringField('SEXO',validators=[InputRequired()])
 	nacionalidade= StringField('NACIONALIDADE',validators=[InputRequired()])

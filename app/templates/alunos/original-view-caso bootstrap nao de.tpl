@@ -4,8 +4,7 @@
 {% block title %}DORA BABY - Visualização de informações do aluno{% endblock %}
 
 {% block head %}
-	
-	{% include 'home/header-footer-all.tpl' %}
+	{{super()}}
 	{{ fontawesome_html() }}
 	
 {% endblock %}
@@ -14,13 +13,7 @@
 	<style type="text/css">
 		*{
 			background-color: #A2D3C2;
-
 		}
-
-		body{
-			padding-top: 130px;
-		}
-
 		hr.new5 {
 		  border: 3px solid green;
 		  border-radius: 10px;
@@ -184,10 +177,7 @@
 	</style>
 {% endblock %}
 
-
 {% block content %}
-	
-
 	<div class="container">
       <h2 class="titulo">Informações do aluno</h2>
       <hr class="new5">
@@ -252,6 +242,4 @@
 
     </div>
     <a class="icon-home" href="/"><i class="fas fa-home fa-3x">Home</i></a>
-
-    {% include 'home/footer.tpl' %}
 {% endblock %}
